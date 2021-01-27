@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ea9c7da07de304788e44d154f0047e, type: 3}
+  m_Name: Level_1
+  m_EditorClassIdentifier: 
+  columns: 20
+  rows: 20
+  cellSize: 1.05
+  tileWalkablePrefab: {fileID: 7296534559393354678, guid: ba08b53a2e4cb864ba6dc5bcdb5fc5fd, type: 3}
+  tileImpassablePrefab: {fileID: 7296534559393354678, guid: 6eeb81d090ea2ee4f938ddff71f84af7, type: 3}
+  backgroundMaterial: {fileID: 2100000, guid: fabe122bc657f13468b4345cd7e30bc5, type: 2}
+  obstaclePrefabs:
+  - {fileID: 3067336731089863758, guid: 723afd371e0bd544499b7bd23d8a3171, type: 3}
+  - {fileID: 3573824509267659738, guid: b98f9bda3c464c7408e180e226e48dc1, type: 3}
+  - {fileID: 1844574998445582493, guid: dbe6c0176260ac549a25c9abdb2a4e62, type: 3}
+  mouseSensitive: -0.02
+  playerSettings: {fileID: 11400000, guid: 98d222c4c00161140a74983191825576, type: 2}
