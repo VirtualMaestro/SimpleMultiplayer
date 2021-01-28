@@ -1,4 +1,5 @@
-﻿using Client.Scripts.Grids.Components;
+﻿using System.Runtime.CompilerServices;
+using Client.Scripts.Grids.Components;
 using Client.Scripts.Grids.Views;
 using Client.Scripts.Levels.Components;
 using Client.Scripts.Levels.SO;
@@ -52,6 +53,7 @@ namespace Client.Scripts.Grids.Systems
             _world.NewEntity().Get<GridComponent>().Grid = grid;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private void _CreateTile(Node node, LevelSettingsSO levelSettings, Transform gridHolder)
         {
             var tilePrefab = node.IsWalkable ? levelSettings.tileWalkablePrefab : levelSettings.tileImpassablePrefab;

@@ -4,18 +4,16 @@ namespace Client.Scripts.Pathfinding
 {
     public class GridBase
     {
-        private readonly int _columns;
-        private readonly int _rows;
         private readonly Node[,] _grid;
 
-        public int Columns => _columns;
-        public int Rows => _rows;
-        
+        public int Columns { get; }
+        public int Rows { get; }
+
         public GridBase(int cols, int rows)
         {
-            _columns = cols;
-            _rows = rows;
-            _grid = new Node[_columns, _rows];
+            Columns = cols;
+            Rows = rows;
+            _grid = new Node[Columns, Rows];
         }
 
         public void AddNode(Node node)
@@ -34,7 +32,7 @@ namespace Client.Scripts.Pathfinding
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private bool _CanBeSet(int x, int z)
         {
-            return x < _columns && x >= 0 && z >= 0 && z < _rows;
+            return x < Columns && x >= 0 && z >= 0 && z < Rows;
         }
     }
 }

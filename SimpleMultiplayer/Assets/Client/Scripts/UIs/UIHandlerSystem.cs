@@ -1,7 +1,6 @@
 ﻿using Leopotam.Ecs;
-using UnityEngine;
 
-namespace Client.Scripts
+namespace Client.Scripts.UIs
 {
     public class UIHandlerSystem : IEcsRunSystem
     {
