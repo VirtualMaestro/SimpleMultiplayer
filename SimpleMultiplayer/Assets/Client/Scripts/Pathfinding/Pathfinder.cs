@@ -28,7 +28,7 @@ namespace Client.Scripts.Pathfinding
                     if (node.Cost < currentNode.Cost ||
                         Math.Abs(node.Cost - currentNode.Cost) < Tolerance && node.HCost < currentNode.HCost)
                     {
-                        if (currentNode.X != node.X || currentNode.Z != node.Z)
+                        if (currentNode.X != node.X || currentNode.Y != node.Y)
                         {
                             currentNode = node;
                         }
@@ -39,7 +39,7 @@ namespace Client.Scripts.Pathfinding
                 ClosedSet.Add(currentNode);
 
                 // the target node was reached
-                if (currentNode.X == end.X && currentNode.Z == end.Z)
+                if (currentNode.X == end.X && currentNode.Y == end.Y)
                 {
                     _RetracePath(start, currentNode, ref resultPath);
                     
@@ -103,12 +103,12 @@ namespace Client.Scripts.Pathfinding
 
             for (var x = -1; x <= 1; x++)
             {
-                for (var z = -1; z <= 1; z++)
+                for (var y = -1; y <= 1; y++)
                 {
-                    if (x == 0 && z == 0) 
+                    if (x == 0 && y == 0) 
                         continue;
 
-                    if (_FindNeighbour(node.X + x, node.Z + z, node.X, node.Z, out var neighbourNode))
+                    if (_FindNeighbour(node.X + x, node.Y + y, node.X, node.Y, out var neighbourNode))
                     {
                         neighbours.Add(neighbourNode);
                     }                    
@@ -119,9 +119,9 @@ namespace Client.Scripts.Pathfinding
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static bool _FindNeighbour(int searchPosX, int searchPosZ, int currentPosX, int currentPosZ, out Node neighbourNode)
+        private static bool _FindNeighbour(int searchPosX, int searchPosY, int currentPosX, int currentPosY, out Node neighbourNode)
         {
-            neighbourNode = _grid.GetNode(searchPosX, searchPosZ);
+            neighbourNode = _grid.GetNode(searchPosX, searchPosY);
 
             if (neighbourNode == null || !neighbourNode.IsWalkable) 
                 return false;
@@ -129,16 +129,16 @@ namespace Client.Scripts.Pathfinding
             // If this neighbour node is diagonal it is has to be checked two neighbours from both sides for walkable
             // in order to move diagonally
             var originalX = searchPosX - currentPosX;
-            var originalZ = searchPosZ - currentPosZ;
+            var originalY = searchPosY - currentPosY;
 
-            if (Math.Abs(originalX) != 1 || Math.Abs(originalZ) != 1) 
+            if (Math.Abs(originalX) != 1 || Math.Abs(originalY) != 1) 
                 return true;
             
-            var neighbour1 = _grid.GetNode(currentPosX + originalX, currentPosZ);
+            var neighbour1 = _grid.GetNode(currentPosX + originalX, currentPosY);
             if (neighbour1 == null || !neighbour1.IsWalkable)
                 return false;
 
-            var neighbour2 = _grid.GetNode(currentPosX, currentPosZ + originalZ);
+            var neighbour2 = _grid.GetNode(currentPosX, currentPosY + originalY);
             return neighbour2 != null && neighbour2.IsWalkable;
         }
 
@@ -146,14 +146,14 @@ namespace Client.Scripts.Pathfinding
         private static int _GetDistance(Node posA, Node posB)
         {
             var distX = Math.Abs(posA.X - posB.X);
-            var distZ = Math.Abs(posA.Z - posB.Z);
+            var distY = Math.Abs(posA.Y - posB.Y);
 
-            if (distX > distZ)
+            if (distX > distY)
             {
-                return 14 * distZ + 10 * (distX - distZ);
+                return 14 * distY + 10 * (distX - distY);
             }
 
-            return 14 * distX + 10 * (distZ - distX);
+            return 14 * distX + 10 * (distY - distX);
         }
     }
 }

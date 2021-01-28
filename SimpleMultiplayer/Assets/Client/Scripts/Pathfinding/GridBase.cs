@@ -18,9 +18,9 @@ namespace Client.Scripts.Pathfinding
 
         public void AddNode(Node node)
         {
-            if (_CanBeSet(node.X, node.Z))
+            if (_CanBeSet(node.X, node.Y))
             {
-                _grid[node.X, node.Z] = node;
+                _grid[node.X, node.Y] = node;
             }
         }
         

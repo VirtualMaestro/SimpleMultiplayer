@@ -58,7 +58,7 @@ namespace Client.Scripts.Grids.Systems
         {
             var tilePrefab = node.IsWalkable ? levelSettings.tileWalkablePrefab : levelSettings.tileImpassablePrefab;
             var posX = node.X * levelSettings.cellSize;
-            var posZ = node.Z * levelSettings.cellSize;
+            var posZ = node.Y * levelSettings.cellSize;
             var tile = Object.Instantiate(tilePrefab, new Vector3(posX, 0, posZ), Quaternion.identity, gridHolder);
             tile.GetComponent<TileViewLink>().Tile = node;
         }
@@ -66,7 +66,7 @@ namespace Client.Scripts.Grids.Systems
         private void _CreateObstacle(Node node, LevelSettingsSO levelSettings, Transform gridHolder)
         {
             var posX = node.X * levelSettings.cellSize;
-            var posZ = node.Z * levelSettings.cellSize;
+            var posZ = node.Y * levelSettings.cellSize;
             var obstaclePrefab =
                 levelSettings.obstaclePrefabs[Random.Range(0, levelSettings.obstaclePrefabs.Length - 1)];
 

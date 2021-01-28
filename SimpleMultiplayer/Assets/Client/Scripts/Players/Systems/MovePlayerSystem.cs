@@ -54,7 +54,7 @@ namespace Client.Scripts.Players.Systems
             foreach (var node in path)
             {
                 var x = node.X * cellSize;
-                var z = node.Z * cellSize;
+                var z = node.Y * cellSize;
 
                 vectors[i++] = new Vector3(x, playerPosY, z);
             }

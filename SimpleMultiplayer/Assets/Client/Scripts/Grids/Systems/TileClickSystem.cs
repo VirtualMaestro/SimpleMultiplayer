@@ -19,13 +19,13 @@ namespace Client.Scripts.Grids.Systems
             var tile = tileView.Tile;
 
             var grid = _gridFilter.Single().Grid;
-            var node = grid.GetNode(tile.X, tile.Z);
+            var node = grid.GetNode(tile.X, tile.Y);
 
             if (!node.IsWalkable) return;
 
             ref var position = ref _world.NewEntity().Get<MovePlayerEvent>();
             position.TileX = tile.X;
-            position.TileZ = tile.Z;
+            position.TileZ = tile.Y;
         }
     }
 }

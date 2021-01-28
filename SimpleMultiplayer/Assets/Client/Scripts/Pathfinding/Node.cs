@@ -3,7 +3,7 @@
     public class Node
     {
         public readonly int X;
-        public readonly int Z;
+        public readonly int Y;
         public readonly bool IsWalkable;
 
         //Node's costs
@@ -18,13 +18,13 @@
         public Node(int col, int row, bool isWalkable = true)
         {
             X = col;
-            Z = row;
+            Y = row;
             IsWalkable = isWalkable;
         }
 
         public override string ToString()
         {
-            return $"Node position: [{X}/{Z}], Walkable: {IsWalkable}, Costs: H={HCost}, G={GCost}";
+            return $"Node position: [{X}/{Y}], Walkable: {IsWalkable}, Costs: H={HCost}, G={GCost}";
         }
     }
 }
