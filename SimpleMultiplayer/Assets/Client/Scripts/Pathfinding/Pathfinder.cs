@@ -35,7 +35,7 @@ namespace Client.Scripts.Pathfinding
                     }
                 }
 
-                OpenSet.Remove(currentNode);
+                OpenSet.RemoveAt(0);
                 ClosedSet.Add(currentNode);
 
                 // the target node was reached
