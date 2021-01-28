@@ -30,7 +30,7 @@ namespace Client.Scripts.Players.Systems
             var playerPosition = playerTransform.GetGridPosition(levelSettings.cellSize);
             var path = new List<Node>();
             var start = new Node((int) playerPosition.x, (int) playerPosition.y);
-            var end = new Node(move.TileX, move.TileZ);
+            var end = new Node(move.GridX, move.GridY);
 
             if (Pathfinder.FindPath(grid, start, end, ref path))
             {
@@ -53,10 +53,10 @@ namespace Client.Scripts.Players.Systems
 
             foreach (var node in path)
             {
-                var x = node.X * cellSize;
-                var z = node.Y * cellSize;
+                var posX = node.X * cellSize;
+                var posZ = node.Y * cellSize;
 
-                vectors[i++] = new Vector3(x, playerPosY, z);
+                vectors[i++] = new Vector3(posX, playerPosY, posZ);
             }
 
             return vectors;

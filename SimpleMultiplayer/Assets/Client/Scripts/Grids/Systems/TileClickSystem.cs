@@ -15,17 +15,18 @@ namespace Client.Scripts.Grids.Systems
         {
             if (_tileClickFilter.IsEmpty()) return;
 
-            var tileView = _tileClickFilter.Single().Tile;
-            var tile = tileView.Tile;
+            var tileClickEvent = _tileClickFilter.Single();
+            var gridX = tileClickEvent.GridX;
+            var gridY = tileClickEvent.GridY;
 
             var grid = _gridFilter.Single().Grid;
-            var node = grid.GetNode(tile.X, tile.Y);
+            var node = grid.GetNode(gridX, gridY);
 
             if (!node.IsWalkable) return;
 
             ref var position = ref _world.NewEntity().Get<MovePlayerEvent>();
-            position.TileX = tile.X;
-            position.TileZ = tile.Y;
+            position.GridX = gridX;
+            position.GridY = gridY;
         }
     }
 }

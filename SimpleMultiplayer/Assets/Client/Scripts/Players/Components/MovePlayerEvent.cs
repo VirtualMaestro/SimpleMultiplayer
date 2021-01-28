@@ -2,7 +2,7 @@
 {
     public struct MovePlayerEvent
     {
-        public int TileX;
-        public int TileZ;
+        public int GridX;
+        public int GridY;
     }
 }

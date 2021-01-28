@@ -33,7 +33,9 @@ namespace Client.Scripts.Inputs.Systems
             var tileView = hit.collider.GetComponent<TileViewLink>();
             if (tileView == null) return;
 
-            _world.NewEntity().Get<TileClickEvent>().Tile = tileView;
+            ref var clickEvent = ref _world.NewEntity().Get<TileClickEvent>();
+            clickEvent.GridX = tileView.GridX;
+            clickEvent.GridY = tileView.GridY;
         }
 
         private void _OnDragHandler(LeanFinger leanFinger)

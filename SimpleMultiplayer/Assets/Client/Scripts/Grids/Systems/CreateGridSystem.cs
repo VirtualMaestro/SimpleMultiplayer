@@ -60,7 +60,9 @@ namespace Client.Scripts.Grids.Systems
             var posX = node.X * levelSettings.cellSize;
             var posZ = node.Y * levelSettings.cellSize;
             var tile = Object.Instantiate(tilePrefab, new Vector3(posX, 0, posZ), Quaternion.identity, gridHolder);
-            tile.GetComponent<TileViewLink>().Tile = node;
+            var tileLink = tile.GetComponent<TileViewLink>();
+            tileLink.GridX = node.X;
+            tileLink.GridY = node.Y;
         }
 
         private void _CreateObstacle(Node node, LevelSettingsSO levelSettings, Transform gridHolder)
