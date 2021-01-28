@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 
 namespace Client.Scripts.Pathfinding
 {
@@ -52,7 +53,7 @@ namespace Client.Scripts.Pathfinding
                     if (ClosedSet.Contains(neighbour)) 
                         continue;
                     
-                    //we create a new movement cost for our neighbours
+                    // new movement cost for neighbours
                     var moveCostToNeighbour = currentNode.GCost + _GetDistance(currentNode, neighbour);
 
                     // if it's lower than the neighbour's cost
@@ -65,9 +66,7 @@ namespace Client.Scripts.Pathfinding
                     neighbour.ParentNode = currentNode;
                     
                     if (!OpenSet.Contains(neighbour))
-                    {
                         OpenSet.Add(neighbour);
-                    }
                 }
             }
 
@@ -75,6 +74,7 @@ namespace Client.Scripts.Pathfinding
             return false;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static void _Reset()
         {
             _grid = null;
@@ -96,6 +96,7 @@ namespace Client.Scripts.Pathfinding
             path.Reverse();
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static List<Node> _GetNeighbours(Node node)
         {
             var neighbours = new List<Node>();
@@ -117,6 +118,7 @@ namespace Client.Scripts.Pathfinding
             return neighbours;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static bool _FindNeighbour(int searchPosX, int searchPosZ, int currentPosX, int currentPosZ, out Node neighbourNode)
         {
             neighbourNode = _grid.GetNode(searchPosX, searchPosZ);
@@ -140,6 +142,7 @@ namespace Client.Scripts.Pathfinding
             return neighbour2 != null && neighbour2.IsWalkable;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static int _GetDistance(Node posA, Node posB)
         {
             var distX = Math.Abs(posA.X - posB.X);
