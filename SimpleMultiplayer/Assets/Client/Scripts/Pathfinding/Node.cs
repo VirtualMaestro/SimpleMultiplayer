@@ -6,12 +6,13 @@
         public readonly int Y;
         public readonly bool IsWalkable;
 
-        //Node's costs
+        // Heuristic cost
         public float HCost;
+        // Path cost to this node
         public float GCost;
 
         // Total cost  (GCost + HCost)
-        public float Cost => GCost + HCost;
+        public float FCost => GCost + HCost;
 
         public Node ParentNode;
 
@@ -24,7 +25,7 @@
 
         public override string ToString()
         {
-            return $"Node position: [{X}/{Y}], Walkable: {IsWalkable}, Costs: H={HCost}, G={GCost}";
+            return $"Node position: [{X}/{Y}], Walkable: {IsWalkable}, Costs: F={FCost}, H={HCost}, G={GCost}";
         }
     }
 }

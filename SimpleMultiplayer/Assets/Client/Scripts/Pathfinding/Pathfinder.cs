@@ -24,9 +24,9 @@ namespace Client.Scripts.Pathfinding
 
                 foreach (var node in OpenSet)
                 {
-                    // Calculate costs for the current node
-                    if (node.Cost < currentNode.Cost ||
-                        Math.Abs(node.Cost - currentNode.Cost) < Tolerance && node.HCost < currentNode.HCost)
+                    // Choose new optimal node with less cost
+                    if (node.FCost < currentNode.FCost ||
+                        Math.Abs(node.FCost - currentNode.FCost) < Tolerance && node.HCost < currentNode.HCost)
                     {
                         if (currentNode.X != node.X || currentNode.Y != node.Y)
                         {
@@ -54,7 +54,7 @@ namespace Client.Scripts.Pathfinding
                         continue;
                     
                     // new movement cost for neighbours
-                    var moveCostToNeighbour = currentNode.GCost + _GetDistance(currentNode, neighbour);
+                    var moveCostToNeighbour = currentNode.GCost + _calculateHeuristicCost(currentNode, neighbour);
 
                     // if it's lower than the neighbour's cost
                     if (!(moveCostToNeighbour < neighbour.GCost) && OpenSet.Contains(neighbour)) 
@@ -62,7 +62,7 @@ namespace Client.Scripts.Pathfinding
                     
                     // calculate new costs
                     neighbour.GCost = moveCostToNeighbour;
-                    neighbour.HCost = _GetDistance(neighbour, end);
+                    neighbour.HCost = _calculateHeuristicCost(neighbour, end);
                     neighbour.ParentNode = currentNode;
                     
                     if (!OpenSet.Contains(neighbour))
@@ -108,7 +108,7 @@ namespace Client.Scripts.Pathfinding
                     if (x == 0 && y == 0) 
                         continue;
 
-                    if (_FindNeighbour(node.X + x, node.Y + y, node.X, node.Y, out var neighbourNode))
+                    if (_ValidateNeighbour(node.X + x, node.Y + y, node.X, node.Y, out var neighbourNode))
                     {
                         neighbours.Add(neighbourNode);
                     }                    
@@ -119,7 +119,7 @@ namespace Client.Scripts.Pathfinding
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static bool _FindNeighbour(int searchPosX, int searchPosY, int currentPosX, int currentPosY, out Node neighbourNode)
+        private static bool _ValidateNeighbour(int searchPosX, int searchPosY, int currentPosX, int currentPosY, out Node neighbourNode)
         {
             neighbourNode = _grid.GetNode(searchPosX, searchPosY);
 
@@ -131,9 +131,11 @@ namespace Client.Scripts.Pathfinding
             var originalX = searchPosX - currentPosX;
             var originalY = searchPosY - currentPosY;
 
+            // if searched node isn't diagonal
             if (Math.Abs(originalX) != 1 || Math.Abs(originalY) != 1) 
                 return true;
             
+            // if it is diagonal then check its neighbors whether they are walkable
             var neighbour1 = _grid.GetNode(currentPosX + originalX, currentPosY);
             if (neighbour1 == null || !neighbour1.IsWalkable)
                 return false;
@@ -142,8 +144,9 @@ namespace Client.Scripts.Pathfinding
             return neighbour2 != null && neighbour2.IsWalkable;
         }
 
+        /// Used heuristic method 'Diagonal Shortcut'
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        private static int _GetDistance(Node posA, Node posB)
+        private static int _calculateHeuristicCost(Node posA, Node posB)
         {
             var distX = Math.Abs(posA.X - posB.X);
             var distY = Math.Abs(posA.Y - posB.Y);
