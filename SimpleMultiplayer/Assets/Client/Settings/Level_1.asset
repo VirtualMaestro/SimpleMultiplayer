@@ -22,5 +22,5 @@ MonoBehaviour:
   - {fileID: 3067336731089863758, guid: 723afd371e0bd544499b7bd23d8a3171, type: 3}
   - {fileID: 3573824509267659738, guid: b98f9bda3c464c7408e180e226e48dc1, type: 3}
   - {fileID: 1844574998445582493, guid: dbe6c0176260ac549a25c9abdb2a4e62, type: 3}
-  mouseSensitive: -0.02
+  mouseSensitive: 1
   playerSettings: {fileID: 11400000, guid: 98d222c4c00161140a74983191825576, type: 2}
