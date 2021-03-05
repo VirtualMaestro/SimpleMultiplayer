@@ -33,14 +33,6 @@ public class @InputMapping : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
-                },
-                {
-                    ""name"": ""DragMap"",
-                    ""type"": ""Button"",
-                    ""id"": ""ad7bf3bf-427e-4c0c-a053-09697242329e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -87,28 +79,6 @@ public class @InputMapping : IInputActionCollection, IDisposable
                     ""action"": ""TrackScreenContact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""976ea386-da2e-4389-801e-0af8a1e6dacc"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""MouseScheme"",
-                    ""action"": ""DragMap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""77e2d4c6-c9ea-4c6d-b94b-9f368c78cc9c"",
-                    ""path"": ""<Touchscreen>/primaryTouch/press"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""TouchScheme"",
-                    ""action"": ""DragMap"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -142,7 +112,6 @@ public class @InputMapping : IInputActionCollection, IDisposable
         m_PlayerControls = asset.FindActionMap("PlayerControls", throwIfNotFound: true);
         m_PlayerControls_TrackCursor = m_PlayerControls.FindAction("TrackCursor", throwIfNotFound: true);
         m_PlayerControls_TrackScreenContact = m_PlayerControls.FindAction("TrackScreenContact", throwIfNotFound: true);
-        m_PlayerControls_DragMap = m_PlayerControls.FindAction("DragMap", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -194,14 +163,12 @@ public class @InputMapping : IInputActionCollection, IDisposable
     private IPlayerControlsActions m_PlayerControlsActionsCallbackInterface;
     private readonly InputAction m_PlayerControls_TrackCursor;
     private readonly InputAction m_PlayerControls_TrackScreenContact;
-    private readonly InputAction m_PlayerControls_DragMap;
     public struct PlayerControlsActions
     {
         private @InputMapping m_Wrapper;
         public PlayerControlsActions(@InputMapping wrapper) { m_Wrapper = wrapper; }
         public InputAction @TrackCursor => m_Wrapper.m_PlayerControls_TrackCursor;
         public InputAction @TrackScreenContact => m_Wrapper.m_PlayerControls_TrackScreenContact;
-        public InputAction @DragMap => m_Wrapper.m_PlayerControls_DragMap;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -217,9 +184,6 @@ public class @InputMapping : IInputActionCollection, IDisposable
                 @TrackScreenContact.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTrackScreenContact;
                 @TrackScreenContact.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTrackScreenContact;
                 @TrackScreenContact.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnTrackScreenContact;
-                @DragMap.started -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDragMap;
-                @DragMap.performed -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDragMap;
-                @DragMap.canceled -= m_Wrapper.m_PlayerControlsActionsCallbackInterface.OnDragMap;
             }
             m_Wrapper.m_PlayerControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -230,9 +194,6 @@ public class @InputMapping : IInputActionCollection, IDisposable
                 @TrackScreenContact.started += instance.OnTrackScreenContact;
                 @TrackScreenContact.performed += instance.OnTrackScreenContact;
                 @TrackScreenContact.canceled += instance.OnTrackScreenContact;
-                @DragMap.started += instance.OnDragMap;
-                @DragMap.performed += instance.OnDragMap;
-                @DragMap.canceled += instance.OnDragMap;
             }
         }
     }
@@ -259,6 +220,5 @@ public class @InputMapping : IInputActionCollection, IDisposable
     {
         void OnTrackCursor(InputAction.CallbackContext context);
         void OnTrackScreenContact(InputAction.CallbackContext context);
-        void OnDragMap(InputAction.CallbackContext context);
     }
 }

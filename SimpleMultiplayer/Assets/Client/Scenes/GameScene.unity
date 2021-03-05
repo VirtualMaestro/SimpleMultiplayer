@@ -410,22 +410,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: fab732da-683c-49b4-b4df-35f29a26946b
     m_ActionName: PlayerControls/TrachClick[/Mouse/leftButton]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 869152934}
-        m_TargetAssemblyTypeName: Client.Scripts.Inputs.InputManager, Assembly-CSharp
-        m_MethodName: DragMap
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: ad7bf3bf-427e-4c0c-a053-09697242329e
-    m_ActionName: PlayerControls/DragMap[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerControls

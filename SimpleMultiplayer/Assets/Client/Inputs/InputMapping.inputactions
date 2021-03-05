@@ -20,14 +20,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "DragMap",
-                    "type": "Button",
-                    "id": "ad7bf3bf-427e-4c0c-a053-09697242329e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -72,28 +64,6 @@
                     "processors": "",
                     "groups": "TouchScheme",
                     "action": "TrackScreenContact",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "976ea386-da2e-4389-801e-0af8a1e6dacc",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "MouseScheme",
-                    "action": "DragMap",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "77e2d4c6-c9ea-4c6d-b94b-9f368c78cc9c",
-                    "path": "<Touchscreen>/primaryTouch/press",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "TouchScheme",
-                    "action": "DragMap",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
