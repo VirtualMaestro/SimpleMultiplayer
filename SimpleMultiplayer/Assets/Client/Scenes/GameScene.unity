@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 179653950}
+  - component: {fileID: 179653951}
   m_Layer: 0
   m_Name: GridHolder
   m_TagString: Untagged
@@ -153,6 +154,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179653951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179653949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71ac436e5178410485fc48aa7122d44a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerProperties:
+    Enter: 0
+    Stay: 0
+    Exit: 0
+    Enter2D: 0
+    Stay2D: 0
+    Exit2D: 0
+  collisionProperties:
+    Enter: 0
+    Stay: 0
+    Exit: 0
+    Enter2D: 0
+    Stay2D: 0
+    Exit2D: 0
 --- !u!1 &220790142
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,6 +273,162 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &869152933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 869152936}
+  - component: {fileID: 869152935}
+  - component: {fileID: 869152934}
+  m_Layer: 0
+  m_Name: Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &869152934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869152933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3d2cf1c45baaad4397583bafee99c86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerProperties:
+    Enter: 0
+    Stay: 0
+    Exit: 0
+    Enter2D: 0
+    Stay2D: 0
+    Exit2D: 0
+  collisionProperties:
+    Enter: 0
+    Stay: 0
+    Exit: 0
+    Enter2D: 0
+    Stay2D: 0
+    Exit2D: 0
+--- !u!114 &869152935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869152933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 67b854e22ff67654a92d7c4d8fe9a804, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 869152934}
+        m_TargetAssemblyTypeName: Client.Scripts.Inputs.InputManager, Assembly-CSharp
+        m_MethodName: DeviceLost
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 869152934}
+        m_TargetAssemblyTypeName: Client.Scripts.Inputs.InputManager, Assembly-CSharp
+        m_MethodName: DeviceRegained
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 869152934}
+        m_TargetAssemblyTypeName: Client.Scripts.Inputs.InputManager, Assembly-CSharp
+        m_MethodName: DeviceChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 869152934}
+        m_TargetAssemblyTypeName: Client.Scripts.Inputs.InputManager, Assembly-CSharp
+        m_MethodName: TrackPosition
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cf59b3e8-1da9-49af-8016-57c2508b6287
+    m_ActionName: Touch/Movement[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 869152934}
+        m_TargetAssemblyTypeName: Client.Scripts.Inputs.InputManager, Assembly-CSharp
+        m_MethodName: TrackScreenContact
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: fab732da-683c-49b4-b4df-35f29a26946b
+    m_ActionName: PlayerControls/TrachClick[/Mouse/leftButton]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: PlayerControls
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!4 &869152936
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869152933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1088494656
 GameObject:
   m_ObjectHideFlags: 0
@@ -255,10 +438,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1088494659}
-  - component: {fileID: 1088494658}
   - component: {fileID: 1088494657}
   - component: {fileID: 1088494660}
-  - component: {fileID: 1088494661}
   - component: {fileID: 1088494662}
   m_Layer: 0
   m_Name: EntryPoint
@@ -279,20 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cea3c5e0cae4701ab2939a522453965, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1088494658
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088494656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 78c02471be8a7c34cab93097ede90003, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  context: {fileID: 1088494657}
-  physicsContext: {fileID: 0}
+  enableUiEmitter: 0
 --- !u!4 &1088494659
 Transform:
   m_ObjectHideFlags: 0
@@ -335,32 +503,6 @@ MonoBehaviour:
     Exit2D: 0
   levelSettings: {fileID: 11400000, guid: 8ec8679fdc8f2024898c60b63ede7433, type: 2}
   gridHolder: {fileID: 179653949}
---- !u!114 &1088494661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1088494656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fc98219a83dff145947365dc914d06e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TapThreshold: 0.2
-  SwipeThreshold: 100
-  ReferenceDpi: 200
-  GuiLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  RecordFingers: 1
-  RecordThreshold: 5
-  RecordLimit: 10
-  SimulateMultiFingers: 1
-  PinchTwistKey: 306
-  MovePivotKey: 308
-  MultiDragKey: 308
-  FingerTexture: {fileID: 2800000, guid: 25c48be3a87ea0f489a6d41c9c9a2194, type: 3}
 --- !u!114 &1088494662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +510,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088494656}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
@@ -430,8 +572,8 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
-  orthographic size: 5
+  orthographic: 1
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
