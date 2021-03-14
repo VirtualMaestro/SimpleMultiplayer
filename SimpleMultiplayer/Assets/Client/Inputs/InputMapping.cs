@@ -72,8 +72,8 @@ public class @InputMapping : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a8645f08-8187-43e1-bb7b-8d3caa7aba6f"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
-                    ""interactions"": ""Tap"",
+                    ""path"": ""<Touchscreen>/press"",
+                    ""interactions"": ""Press(behavior=1)"",
                     ""processors"": """",
                     ""groups"": ""TouchScheme"",
                     ""action"": ""TrackScreenContact"",

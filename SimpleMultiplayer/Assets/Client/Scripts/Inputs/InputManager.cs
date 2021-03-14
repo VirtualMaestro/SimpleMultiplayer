@@ -1,5 +1,6 @@
 using Client.Scripts.Inputs.Components;
 using Leopotam.Ecs;
+using StubbUnity.StubbFramework.Logging;
 using StubbUnity.Unity.View;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,7 +9,7 @@ namespace Client.Scripts.Inputs
 {
     public class InputManager : EcsViewLink
     {
-        private const float DragThreshold = 1.0f;
+        private const float DragThreshold = 10.0f;
         
         private Vector2 _prevScreenPosition;
         private Vector2 _deltaScreenPosition;
@@ -67,17 +68,17 @@ namespace Client.Scripts.Inputs
 
         public void DeviceLost(PlayerInput input)
         {
-            Debug.Log($"Device lost!");
+            log.Warn($"Device lost!");
         }
 
         public void DeviceRegained(PlayerInput input)
         {
-            Debug.Log($"Device regained!");
+            log.Warn($"Device regained!");
         }
 
         public void DeviceChanged(PlayerInput input)
         {
-            Debug.Log($"Device changed!");
+            log.Warn($"Device changed!");
         }
 
         #endregion
