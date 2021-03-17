@@ -24,7 +24,8 @@ namespace Client.Scripts.Players.Systems
 
             var move = _movePlayerFilter.Single();
             var grid = _gridFilter.Single().Grid;
-            var player = _playerFilter.Single().Player;
+            ref var playerComponent = ref _playerFilter.Single();
+            var player = playerComponent.Player;
             var levelSettings = _levelSettingsFilter.Single().LevelSettings;
             var playerTransform = player.transform;
             var playerPosition = playerTransform.GetGridPosition(levelSettings.cellSize);
@@ -40,9 +41,14 @@ namespace Client.Scripts.Players.Systems
                 var direction = (vertices[vertices.Length - 1] - position).normalized;
                 var rotation = Quaternion.LookRotation(direction);
 
-                DOTween.Sequence()
+                DOTween.Kill(playerComponent.MoveAnimationId);
+                
+                var sequence = DOTween.Sequence();
+                sequence
                     .Append(playerTransform.DORotate(rotation.eulerAngles, 0.3f))
                     .Append(playerTransform.DOPath(vertices, duration).SetLookAt(1.0f, Vector3.forward, Vector3.up));
+                
+                playerComponent.MoveAnimationId = sequence.intId;
             }
         }
 
